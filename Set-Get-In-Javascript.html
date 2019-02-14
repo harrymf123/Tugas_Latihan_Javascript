@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Set and Get Value Javascript</title>
+        <!-- Load bootstrap -->
+        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+        <!-- Load jquery and bootstrap js -->
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/popper.min.js"></script>
+        <script src="assets/js/bootstrap.js"></script>
+        <script type="text/javascript">
+            function Hitung(){
+                // Mengambil nilai dari elemen (getValue)
+                var panjang = document.getElementById('panjang').value;
+                var lebar = document.getElementById('lebar').value;
+
+                // Menghitung nilai yang telah diambil
+                var hasil = panjang * lebar;
+
+                // Menentukan nilai pada elemen (set value)
+                document.getElementById('hasil').value = hasil;
+            }
+        </script>
+    </head>
+    <body>
+        <div class="container" align="center">
+            <br><br><br><br>
+            <div class="card col-md-6">
+                <br>
+                <div class="card-header bg-secondary text-white">
+                    <h4>Hitung Luas Persegi Panjang</h4>
+                </div>
+                <div class="card-body" align="left">
+                    Panjang
+                    <input type="number" id="panjang" class="form-control" placeholder="...">
+                    Lebar
+                    <input type="number" id="lebar" class="form-control" placeholder="..."><br>
+                    <button type="button" class="btn btn-info btn-block" onclick="Hitung();">Hitung</button><br>
+                    <input type="text" class="form-control text-center" id="hasil" readonly placeholder="Hasil">
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

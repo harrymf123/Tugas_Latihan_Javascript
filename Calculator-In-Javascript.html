@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Calculator Web In Javascript</title>
+        <!-- Load bootstrap -->
+        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+        <style media="screen">
+            .screen{
+                height: 60px;
+                font-size: 30px;
+                margin-bottom: 20px;
+            }
+        </style>
+        <!-- Load jquery and bootstrap js -->
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/popper.min.js"></script>
+        <script src="assets/js/bootstrap.js"></script>
+        <script type="text/javascript">
+            // Untuk menyimpan angka sementara
+            var temp = 0;
+
+            // Untuk menyimpan operasi sementara
+            var opr = '';
+
+            // Fungsi untuk menampilkan angka ke display
+            function ShowNumber(number){
+                var screen = document.getElementById('screen').value;
+                /*
+                    Jika tampilan display masih kosong,
+                    maka angka langsung ditambahkan
+                */
+                // Number(..) digunakan untuk konversi ke tipis numeric
+                if(Number(screen) == 0){
+                    document.getElementById('screen').value = number;
+                /* 
+                    Jika display sudah ada angkanya,
+                    maka angka digabungkan
+                */
+                }else{
+                    document.getElementById('screen').value += number;
+                }
+            }
+
+            // Fungsi untuk melakukan operasi perhitungan
+            function Operation(operator){
+                // Mengambil nilai dari display
+                var screen = document.getElementById('screen').value;
+                /*
+                    Jika nilai temp masih kosong, maka nilai
+                    temp akan diisi dengan angka yang ada di display
+                */
+                if(temp = 0){
+                    temp = Number(screen);
+                /*
+                    Jika nilai temp sudah ada, maka nilai
+                    temp akan diolah sesuai dengan operasi yang ada
+                */
+                }else{
+                    if(opr == '+'){
+                        temp += Number(screen);
+                    }else if(opr == '-'){
+                        temp -= Number(screen);
+                    }else if(opr == '*'){
+                        temp *= Number(screen);
+                    }else if(opr == '/'){
+                        if(Number(screen) == 0){
+                            alert('Can not devide by zero');
+                        }else{
+                            temp /= Number(screen);
+                        }
+                    }
+                }
+                opr = operator;
+                /*
+                    Ketika tombol operator diklik, 
+                    maka tampilan display akan kosong
+                */
+                document.getElementById('screen').value = ""; 
+            }
+
+            /*
+                Fungsi untuk tombol sama dengan (=) ketika fungsi
+                ini dipanggil maka akan display menampilkan hasil perhitungan
+            */
+            function ShowResult(){
+                var screen = document.getElementById('screen').value;
+                if(opr == '+'){
+                    temp += Number(screen);
+                    document.getElementById('screen').value = temp;
+                }else if(opr == '-'){
+                    temp -= Number(screen);
+                    document.getElementById('screen').value = temp;
+                }else if(opr == '*'){
+                    temp *= Number(screen);
+                    document.getElementById('screen').value = temp;
+                }else if(opr == '/'){
+                    if(Number(screen) == 0){
+                        alert('Can not devide by zero');
+                    }else{
+                        temp /= Number(screen);
+                        document.getElementById('screen').value = temp;
+                    }
+                }
+            }
+
+            // Fungsi untuk mereset Calculator
+            function Reset(){
+                temp = 0;
+                document.getElementById('screen').value = "";
+            }
+        </script>
+    </head>
+    <body>
+        <div class="container" align="center">
+            <br><br><br><br><br>
+            <div class="col-md-6">
+                <div class="card col-sm-12">
+                    <div class="card-header bg-primary text-white">
+                        <h4>Basic Calculator</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <input type="text" id="screen" class="form-control text-center screen" readonly>
+                            </div>
+
+                            <div class="col-sm-3">
+                                <button type="button" class="btn btn-block btn-info" onclick="ShowNumber('1');"><h3>1</h3></button>
+                                <button type="button" class="btn btn-block btn-info" onclick="ShowNumber('4');"><h3>4</h3></button>
+                                <button type="button" class="btn btn-block btn-info" onclick="ShowNumber('7');"><h3>7</h3></button>
+                                <button type="button" class="btn btn-block btn-warning" onclick="Reset();"><h3>CE</h3></button>
+                            </div>
+                            <div class="col-sm-3">
+                                <button type="button" class="btn btn-block btn-info" onclick="ShowNumber('2');"><h3>2</h3></button>
+                                <button type="button" class="btn btn-block btn-info" onclick="ShowNumber('5');"><h3>5</h3></button>
+                                <button type="button" class="btn btn-block btn-info" onclick="ShowNumber('8');"><h3>8</h3></button>
+                                <button type="button" class="btn btn-block btn-info" onclick="ShowNumber('0');"><h3>0</h3></button>
+                            </div>
+                            <div class="col-sm-3">
+                                <button type="button" class="btn btn-block btn-info" onclick="ShowNumber('3');"><h3>3</h3></button>
+                                <button type="button" class="btn btn-block btn-info" onclick="ShowNumber('6');"><h3>6</h3></button>
+                                <button type="button" class="btn btn-block btn-info" onclick="ShowNumber('9');"><h3>9</h3></button>
+                                <button type="button" class="btn btn-block btn-success" onclick="ShowResult();"><h3>=</h3></button>
+                            </div>
+                            <div class="col-sm-3">
+                                <button type="button" class="btn btn-block btn-danger" onclick="Operation('*');"><h3>x</h3></button>
+                                <button type="button" class="btn btn-block btn-danger" onclick="Operation('/');"><h3>/</h3></button>
+                                <button type="button" class="btn btn-block btn-danger" onclick="Operation('-');"><h3>-</h3></button>
+                                <button type="button" class="btn btn-block btn-danger" onclick="Operation('+');"><h3>+</h3></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

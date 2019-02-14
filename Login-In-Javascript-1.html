@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Login In Javascript</title>
+        <!-- Load bootstrap -->
+        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+        <!-- Load jquery and bootstrap js -->
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/popper.min.js"></script>
+        <script src="assets/js/bootstrap.js"></script>
+        <script type="text/javascript">
+            function Masuk(){
+                var benar = "Login Anda Berhasil";
+                var salah = "Login Anda Gagal";
+                var username = document.getElementById('username').value;
+                var password = document.getElementById('password').value;
+                if(username == "harrymf" && password == "rico123"){
+                    document.getElementById('isi').value = benar;
+                    document.getElementById('isi').style.backgroundColor = 'green';
+                }else{
+                    document.getElementById('isi').value = salah;
+                    document.getElementById('isi').style.backgroundColor = 'red';
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div class="container" align="center">
+            <br><br><br><br>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header bg-danger text-white">
+                        <h4>LOGIN FORM 1</h4>
+                    </div>
+                    <div class="card-body" align="left">
+                        <label for="" >Username</label>
+                        <input type="text" id="username" class="form-control text-center">
+                        <label for="">Password</label>
+                        <input type="password" id="password" class="form-control text-center">
+                    </div>
+                    <div class="card-body">
+                        <button type="submit" id="submit" class="btn btn-block btn-info" onclick="Masuk();"><h6>LOGIN</h6></button>
+                    </div>
+                    <div class="card-footer">
+                        <input type="text" id="isi" class="form-control text-center text-white" readonly>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
